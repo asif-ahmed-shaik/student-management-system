@@ -63,7 +63,7 @@ def search_student():
 
     if not found:
         print("\n Student not found.")
-        
+
 
 def update_student():
 
@@ -85,4 +85,21 @@ def update_student():
             return
 
     print("\n Student not found.")
+
+def delete_student():
+
+    print("\n--- Delete Student ---")
+
+    search_id = input("Enter Student ID to delete: ")
+
+    for student in students:
+
+        if student["id"] == search_id:
+
+            students.remove(student)
+
+            print("\nStudent deleted successfully!")
+            return
+
+    print("\nStudent not found.")
 
