@@ -2,7 +2,8 @@ from student_operations import (
     add_student,
     view_students,
     search_student,
-    update_student
+    update_student,
+    delete_student
 )
 
 while True:
@@ -33,8 +34,8 @@ while True:
         update_student()
 
     elif choice == "5":
-        print("Delete Student feature coming soon.")
-
+        delete_student()
+        
     elif choice == "6":
         print("Thank you for using Student Management System.")
         break
