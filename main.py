@@ -1,5 +1,6 @@
 students = []
 
+
 def add_student():
     print("\n--- Add Student ---")
 
@@ -19,6 +20,7 @@ def add_student():
 
     print("\n Student added successfully!")
 
+
 def view_students():
 
     print("\n--- Student Records ---")
@@ -33,8 +35,8 @@ def view_students():
         print(f"Name       : {student['name']}")
         print(f"Age        : {student['age']}")
         print(f"Department : {student['department']}")
-
     print("----------------------------")
+
 
 def search_student():
 
@@ -48,7 +50,7 @@ def search_student():
 
         if student["id"] == search_id:
 
-            print("\nStudent Found!")
+            print("\n Student Found!")
             print("----------------------------")
             print(f"ID         : {student['id']}")
             print(f"Name       : {student['name']}")
@@ -60,13 +62,13 @@ def search_student():
             break
 
     if not found:
-        print("\n Student not found.")
+        print("\n❌ Student not found.")
 
 
 while True:
 
     print("\n" + "=" * 45)
-    print("     STUDENT MANAGEMENT SYSTEM")
+    print("      STUDENT MANAGEMENT SYSTEM")
     print("=" * 45)
 
     print("1. Add Student")
@@ -92,4 +94,4 @@ while True:
         break
 
     else:
-        print("\n⚠️ This feature is coming soon.")
+        print("\n This feature is coming soon.")
