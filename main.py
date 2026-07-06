@@ -1,69 +1,9 @@
-students = []
-
-
-def add_student():
-    print("\n--- Add Student ---")
-
-    student_id = input("Enter Student ID: ")
-    name = input("Enter Student Name: ")
-    age = input("Enter Age: ")
-    department = input("Enter Department: ")
-
-    student = {
-        "id": student_id,
-        "name": name,
-        "age": age,
-        "department": department
-    }
-
-    students.append(student)
-
-    print("\n Student added successfully!")
-
-
-def view_students():
-
-    print("\n--- Student Records ---")
-
-    if len(students) == 0:
-        print("No students found.")
-        return
-
-    for student in students:
-        print("----------------------------")
-        print(f"ID         : {student['id']}")
-        print(f"Name       : {student['name']}")
-        print(f"Age        : {student['age']}")
-        print(f"Department : {student['department']}")
-    print("----------------------------")
-
-
-def search_student():
-
-    print("\n--- Search Student ---")
-
-    search_id = input("Enter Student ID: ")
-
-    found = False
-
-    for student in students:
-
-        if student["id"] == search_id:
-
-            print("\n Student Found!")
-            print("----------------------------")
-            print(f"ID         : {student['id']}")
-            print(f"Name       : {student['name']}")
-            print(f"Age        : {student['age']}")
-            print(f"Department : {student['department']}")
-            print("----------------------------")
-
-            found = True
-            break
-
-    if not found:
-        print("\n❌ Student not found.")
-
+from student_operations import (
+    add_student,
+    view_students,
+    search_student,
+    update_student
+)
 
 while True:
 
@@ -88,9 +28,15 @@ while True:
 
     elif choice == "3":
         search_student()
+    
+    elif choice == "4":
+        update_student()
+
+    elif choice == "5":
+        print("Delete Student feature coming soon.")
 
     elif choice == "6":
-        print("\nThank you for using Student Management System!")
+        print("Thank you for using Student Management System.")
         break
 
     else:
