@@ -35,7 +35,7 @@ while True:
 
     elif choice == "5":
         delete_student()
-        
+
     elif choice == "6":
         print("Thank you for using Student Management System.")
         break
