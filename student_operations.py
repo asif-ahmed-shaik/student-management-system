@@ -1,5 +1,37 @@
+
 students = []
 
+import json
+
+
+def save_students():
+    with open("students.json", "w") as file:
+        json.dump(students, file, indent=4)
+
+def add_student():
+    print("\n--- Add Student ---")
+
+    student_id = input("Enter Student ID: ")
+    name = input("Enter Student Name: ")
+    age = input("Enter Age: ")
+    department = input("Enter Department: ")
+
+    student = {
+        "id": student_id,
+        "name": name,
+        "age": age,
+        "department": department
+    }
+
+    print("Before append:", students)
+
+    students.append(student)
+
+    print("After append:", students)
+
+    save_students()
+
+    print("\nStudent added successfully!")
 
 def add_student():
     print("\n--- Add Student ---")
@@ -17,6 +49,8 @@ def add_student():
     }
 
     students.append(student)
+
+    save_students()
 
     print("\n Student added successfully!")
 
@@ -81,6 +115,8 @@ def update_student():
             student["age"] = input("Enter new age: ")
             student["department"] = input("Enter new department: ")
 
+            save_students()
+
             print("\n Student updated successfully!")
             return
 
@@ -97,6 +133,8 @@ def delete_student():
         if student["id"] == search_id:
 
             students.remove(student)
+
+            save_students()
 
             print("\nStudent deleted successfully!")
             return
