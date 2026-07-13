@@ -23,14 +23,47 @@ def add_student():
     while True:
         student_id = input("Enter Student ID: ").strip()
 
-    if student_id == "":
-        print("Student ID cannot be empty.")
-    else:
-        break
+        if student_id == "":
+            print("Student ID cannot be empty.")
 
-    name = input("Enter Student Name: ")
-    age = input("Enter Age: ")
+        elif any(student["id"] == student_id for student in students):
+            print("Student ID already exists. Please enter a different ID.")
+
+        else:
+            break
+
+    while True:
+        name = input("Enter Student Name: ").strip()
+
+        if name == "":
+            print("Student name cannot be empty.")
+        else:
+            break
+
+    while True:
+        age = input("Enter Age: ").strip()
+
+        if age == "":
+            print("Age cannot be empty.")
+
+        elif not age.isdigit():
+            print("Age must contain only numbers.")
+
+        elif int(age) < 16 or int(age) > 100:
+            print("Age must be between 16 and 100.")
+
+        else:
+            break
+
+
     department = input("Enter Department: ")
+    while True:
+        department = input("Enter Department: ").strip()
+
+        if department == "":
+            print("Department cannot be empty.")
+        else:
+            break
 
     student = {
         "id": student_id,
