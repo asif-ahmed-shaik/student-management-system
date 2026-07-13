@@ -8,30 +8,14 @@ def save_students():
     with open("students.json", "w") as file:
         json.dump(students, file, indent=4)
 
-def add_student():
-    print("\n--- Add Student ---")
+def load_students():
+    global students
+    try:
+        with open("students.json", "r") as file:
+            students = json.load(file)
+    except FileNotFoundError:
+        students = []
 
-    student_id = input("Enter Student ID: ")
-    name = input("Enter Student Name: ")
-    age = input("Enter Age: ")
-    department = input("Enter Department: ")
-
-    student = {
-        "id": student_id,
-        "name": name,
-        "age": age,
-        "department": department
-    }
-
-    print("Before append:", students)
-
-    students.append(student)
-
-    print("After append:", students)
-
-    save_students()
-
-    print("\nStudent added successfully!")
 
 def add_student():
     print("\n--- Add Student ---")

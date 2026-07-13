@@ -3,8 +3,11 @@ from student_operations import (
     view_students,
     search_student,
     update_student,
-    delete_student
+    delete_student,
+    load_students
 )
+
+load_students()
 
 while True:
 
