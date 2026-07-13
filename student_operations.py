@@ -20,7 +20,14 @@ def load_students():
 def add_student():
     print("\n--- Add Student ---")
 
-    student_id = input("Enter Student ID: ")
+    while True:
+        student_id = input("Enter Student ID: ").strip()
+
+    if student_id == "":
+        print("Student ID cannot be empty.")
+    else:
+        break
+
     name = input("Enter Student Name: ")
     age = input("Enter Age: ")
     department = input("Enter Department: ")
