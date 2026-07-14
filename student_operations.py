@@ -3,6 +3,43 @@ students = []
 
 import json
 
+def get_valid_student_id():
+    while True:
+        student_id = input("Enter Student ID: ").strip()
+
+        if student_id == "":
+            print("Student ID cannot be empty.")
+
+        elif any(student["id"] == student_id for student in students):
+            print("Student ID already exists. Please enter a different ID.")
+
+        else:
+            return student_id
+
+def get_valid_age():
+    while True:
+        age = input("Enter Age: ").strip()
+
+        if age == "":
+            print("Age cannot be empty.")
+
+        elif not age.isdigit():
+            print("Age must contain only numbers.")
+
+        elif int(age) < 16 or int(age) > 100:
+            print("Age must be between 16 and 100.")
+
+        else:
+            return age
+
+def get_non_empty_input(prompt):
+    while True:
+        value = input(prompt).strip()
+
+        if value == "":
+            print("This field cannot be empty.")
+        else:
+            return value
 
 def save_students():
     with open("students.json", "w") as file:
@@ -20,50 +57,13 @@ def load_students():
 def add_student():
     print("\n--- Add Student ---")
 
-    while True:
-        student_id = input("Enter Student ID: ").strip()
+    student_id = get_valid_student_id()
 
-        if student_id == "":
-            print("Student ID cannot be empty.")
+    name = get_non_empty_input("Enter Student Name: ")
 
-        elif any(student["id"] == student_id for student in students):
-            print("Student ID already exists. Please enter a different ID.")
+    age = get_valid_age()
 
-        else:
-            break
-
-    while True:
-        name = input("Enter Student Name: ").strip()
-
-        if name == "":
-            print("Student name cannot be empty.")
-        else:
-            break
-
-    while True:
-        age = input("Enter Age: ").strip()
-
-        if age == "":
-            print("Age cannot be empty.")
-
-        elif not age.isdigit():
-            print("Age must contain only numbers.")
-
-        elif int(age) < 16 or int(age) > 100:
-            print("Age must be between 16 and 100.")
-
-        else:
-            break
-
-
-    department = input("Enter Department: ")
-    while True:
-        department = input("Enter Department: ").strip()
-
-        if department == "":
-            print("Department cannot be empty.")
-        else:
-            break
+    department = get_non_empty_input("Enter Department: ")
 
     student = {
         "id": student_id,
