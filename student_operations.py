@@ -85,15 +85,20 @@ def view_students():
 
     if len(students) == 0:
         print("No students found.")
+        input("\nPress Enter to continue...")
         return
 
+    print("-" * 50)
+    print(f"{'ID':<10}{'Name':<20}{'Age':<8}{'Department':<15}")
+    print("-" * 50)
+
     for student in students:
-        print("----------------------------")
-        print(f"ID         : {student['id']}")
-        print(f"Name       : {student['name']}")
-        print(f"Age        : {student['age']}")
-        print(f"Department : {student['department']}")
-    print("----------------------------")
+        print(f"{student['id']:<10}{student['name']:<20}{student['age']:<8}{student['department']:<15}")
+
+    print("-" * 50)
+    print(f"Total Students: {len(students)}")
+
+    input("\nPress Enter to continue...")
 
 
 def search_student():
@@ -122,6 +127,8 @@ def search_student():
     if not found:
         print("\n Student not found.")
 
+        input("\nPress Enter to continue...")
+
 
 def update_student():
 
@@ -142,6 +149,7 @@ def update_student():
             save_students()
 
             print("\n Student updated successfully!")
+            input("\nPress Enter to continue...")
             return
 
     print("\n Student not found.")
@@ -156,11 +164,24 @@ def delete_student():
 
         if student["id"] == search_id:
 
-            students.remove(student)
+            print("\nStudent Found!")
+            print("----------------------------")
+            print(f"ID         : {student['id']}")
+            print(f"Name       : {student['name']}")
+            print(f"Age        : {student['age']}")
+            print(f"Department : {student['department']}")
+            print("----------------------------")
 
-            save_students()
+            choice = input("Are you sure you want to delete this student? (y/n): ").strip().lower()
 
-            print("\nStudent deleted successfully!")
+            if choice == "y":
+                students.remove(student)
+                save_students()
+                print("\nStudent deleted successfully!")
+                input("\nPress Enter to continue...")
+            else:
+                print("\nDeletion cancelled.")
+
             return
 
     print("\nStudent not found.")
