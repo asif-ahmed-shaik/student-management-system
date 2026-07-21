@@ -1,4 +1,6 @@
 import json
+import os
+from student import Student
 
 students = []
 
@@ -13,7 +15,7 @@ def get_valid_student_id():
         if student_id == "":
             print("Student ID cannot be empty.")
 
-        elif any(student["id"] == student_id for student in students):
+        elif any(student.id == student_id for student in students):
             print("Student ID already exists. Please enter a different ID.")
 
         else:
@@ -49,8 +51,12 @@ def get_non_empty_input(prompt):
 
 def save_students():
     try:
+        student_data = []
+        for student in students:
+            student_data.append(student.to_dict())
+
         with open("students.json", "w") as file:
-            json.dump(students, file, indent=4)
+            json.dump(student_data, file, indent=4)
 
     except Exception as e:
         print(f"\nError saving students: {e}")
@@ -61,7 +67,12 @@ def load_students():
 
     try:
         with open("students.json", "r") as file:
-            students = json.load(file)
+            student_data = json.load(file)
+
+        students = []
+
+        for data in student_data:
+            students.append(Student.from_dict(data))
 
     except FileNotFoundError:
         students = []
@@ -83,12 +94,12 @@ def add_student():
     age = get_valid_age()
     department = get_non_empty_input("Enter Department: ")
 
-    student = {
-        "id": student_id,
-        "name": name,
-        "age": age,
-        "department": department
-    }
+    student = Student(
+        student_id,
+        name,
+        age,
+        department
+    )
 
     students.append(student)
     save_students()
@@ -111,10 +122,10 @@ def view_students():
 
     for student in students:
         print(
-            f"{student['id']:<10}"
-            f"{student['name']:<20}"
-            f"{student['age']:<8}"
-            f"{student['department']:<15}"
+            f"{student.id:<10}"
+            f"{student.name:<20}"
+            f"{student.age:<8}"
+            f"{student.department:<15}"
         )
 
     print("-" * 55)
@@ -132,14 +143,10 @@ def search_student():
 
     for student in students:
 
-        if student["id"] == search_id:
+        if student.id == search_id:
 
             print("\nStudent Found!")
-            print("----------------------------")
-            print(f"ID         : {student['id']}")
-            print(f"Name       : {student['name']}")
-            print(f"Age        : {student['age']}")
-            print(f"Department : {student['department']}")
+            print(student)
             print("----------------------------")
 
             found = True
@@ -158,13 +165,13 @@ def update_student():
 
     for student in students:
 
-        if student["id"] == search_id:
+        if student.id == search_id:
 
             print("\nStudent Found!")
 
-            student["name"] = get_non_empty_input("Enter new name: ")
-            student["age"] = get_valid_age()
-            student["department"] = get_non_empty_input("Enter new department: ")
+            student.name = get_non_empty_input("Enter new name: ")
+            student.age = get_valid_age()
+            student.department = get_non_empty_input("Enter new department: ")
 
             save_students()
 
@@ -183,15 +190,9 @@ def delete_student():
 
     for student in students:
 
-        if student["id"] == search_id:
+        if student.id == search_id:
 
-            print("\nStudent Found!")
-            print("----------------------------")
-            print(f"ID         : {student['id']}")
-            print(f"Name       : {student['name']}")
-            print(f"Age        : {student['age']}")
-            print(f"Department : {student['department']}")
-            print("----------------------------")
+            print(student)
 
             choice = input(
                 "Are you sure you want to delete this student? (y/n): "

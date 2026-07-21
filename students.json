@@ -7,14 +7,8 @@
     },
     {
         "id": "102",
-        "name": "Ahmed",
-        "age": "19",
-        "department": "CE"
-    },
-    {
-        "id": "103",
-        "name": "Shaik",
-        "age": "19",
-        "department": "IT"
+        "name": "Ahmed S",
+        "age": "20",
+        "department": "CSE"
     }
 ]
