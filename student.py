@@ -32,3 +32,12 @@ class Student:
             data["age"],
             data["department"]
         )
+    
+    @classmethod
+    def from_row(cls,row):
+        return cls(
+            row[0],
+            row[1],
+            row[2],
+            row[3]
+        )

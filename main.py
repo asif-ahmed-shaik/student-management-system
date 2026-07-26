@@ -1,13 +1,13 @@
+from database import create_table
 from student_operations import (
     add_student,
     view_students,
     search_student,
     update_student,
     delete_student,
-    load_students
 )
 
-load_students()
+create_table()
 
 while True:
 
