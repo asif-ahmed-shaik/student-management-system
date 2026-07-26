@@ -1,0 +1,38 @@
+def analytics_menu():
+
+    """Displays the analytics menu and handles user input."""
+
+    while True:
+
+        print("\n" + "=" * 45)
+        print("      ANALYTICS DASHBOARD")
+        print("=" * 45)
+
+        print("1. Total students")
+        print("2. Average Age")
+        print("3. Youngest Student")
+        print("4. Oldest Student")
+        print("5. Back to Main Menu")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            print("Coming soon")
+
+        elif choice == "2":
+            print("Coming soon")
+
+        elif choice == "3":
+            print("Coming soon")
+
+        elif choice == "4":
+            print("Coming soon")
+
+        elif choice == "5":
+            break
+
+        else:
+            print("Invalid choice. Please try again.")
+
+
+

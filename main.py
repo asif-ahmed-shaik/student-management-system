@@ -1,3 +1,4 @@
+from analytics import analytics_menu
 from database import create_table
 from student_operations import (
     add_student,
@@ -8,6 +9,7 @@ from student_operations import (
 )
 
 create_table()
+analytics_menu()
 
 while True:
 
@@ -21,6 +23,7 @@ while True:
     print("4. Update Student")
     print("5. Delete Student")
     print("6. Exit")
+    print("7. Analytics Dashboard")
 
     choice = input("\nEnter your choice: ")
 
