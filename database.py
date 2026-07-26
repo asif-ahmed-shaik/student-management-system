@@ -118,3 +118,18 @@ def delete_student_from_db(student_id):
 
     connection.close()
 
+
+def get_total_students():
+    connection = sqlite3.connect("students.db")
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT COUNT(*) FROM students
+        """)
+
+    result = cursor.fetchone()
+
+    connection.close()
+
+    return result[0]

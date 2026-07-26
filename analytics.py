@@ -1,3 +1,5 @@
+from database import get_total_students
+
 def analytics_menu():
 
     """Displays the analytics menu and handles user input."""
@@ -17,7 +19,9 @@ def analytics_menu():
         choice = input("Enter your choice: ")
 
         if choice == "1":
-            print("Coming soon")
+            total = get_total_students()
+            print(f"\nTotal number of students: {total}")
+            print("\nPress Enter to continue...")
 
         elif choice == "2":
             print("Coming soon")
