@@ -1,4 +1,4 @@
-from database import get_total_students, get_average_age, get_youngest_age
+from database import get_oldest_age, get_total_students, get_average_age, get_youngest_age
 
 def analytics_menu():
 
@@ -39,7 +39,14 @@ def analytics_menu():
             input("\nPress Enter to continue...")
 
         elif choice == "4":
-            print("Coming soon")
+            oldest = get_oldest_age()
+
+            if oldest is None:
+                print("\nNo students found.")
+            else:
+                print(f"\nOldest Student Age: {oldest} years")
+
+            input("\nPress Enter to continue...")
 
         elif choice == "5":
             break

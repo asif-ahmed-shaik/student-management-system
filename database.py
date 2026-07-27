@@ -166,4 +166,22 @@ def get_youngest_age():
         return None
 
     return result[0]
-    
+
+
+def get_oldest_age():
+    connection = sqlite3.connect("students.db")
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT MAX(age) FROM students
+        """)
+
+    result = cursor.fetchone()
+
+    connection.close()
+
+    if result[0] is None:
+        return None
+
+    return result[0]
