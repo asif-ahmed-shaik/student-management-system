@@ -1,4 +1,4 @@
-from database import get_total_students
+from database import get_total_students, get_average_age
 
 def analytics_menu():
 
@@ -24,7 +24,9 @@ def analytics_menu():
             print("\nPress Enter to continue...")
 
         elif choice == "2":
-            print("Coming soon")
+            avg = get_average_age()
+            print(f"\nAverage age of students: {avg:.2f}")
+            print("\nPress Enter to continue...")
 
         elif choice == "3":
             print("Coming soon")

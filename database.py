@@ -133,3 +133,18 @@ def get_total_students():
     connection.close()
 
     return result[0]
+
+def get_average_age():
+    connection = sqlite3.connect("students.db")
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT AVG(age) FROM students
+        """)
+
+    result = cursor.fetchone()
+
+    connection.close()
+
+    return result[0]
