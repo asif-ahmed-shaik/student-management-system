@@ -202,3 +202,22 @@ def get_students_by_department():
     connection.close()
 
     return result
+
+
+def get_largest_department():
+    connection = sqlite3.connect("students.db")
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT department, COUNT(*) AS total_students FROM students
+        GROUP BY department
+        ORDER BY total_students DESC
+        LIMIT 1;
+        """)
+
+    result = cursor.fetchone()
+
+    connection.close()
+
+    return result

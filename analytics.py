@@ -1,4 +1,4 @@
-from database import get_oldest_age, get_total_students, get_average_age, get_youngest_age, get_students_by_department
+from database import get_oldest_age, get_total_students, get_average_age, get_youngest_age, get_students_by_department, get_largest_department
 
 def analytics_menu():
 
@@ -15,7 +15,8 @@ def analytics_menu():
         print("3. Youngest Student")
         print("4. Oldest Student")
         print("5. Students by Department")
-        print("6. Back to Main Menu")
+        print("6. Largest Department")
+        print("7. Back to Main Menu")
 
         choice = input("Enter your choice: ")
 
@@ -65,6 +66,21 @@ def analytics_menu():
             input("\nPress enter to continue...")
 
         elif choice == "6":
+            largest = get_largest_department()
+
+            if largest is None:
+                print("\nNo students found.")
+            else:
+                department, count = largest
+
+                print("\nLargest Department")
+                print("-" * 25)
+                print(f"Department : {department}")
+                print(f"Students   : {count}")
+
+            input("\nPress enter to continue...")          
+
+        elif choice == "7":
             break
 
         else:
