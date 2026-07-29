@@ -1,4 +1,4 @@
-from database import get_oldest_age, get_total_students, get_average_age, get_youngest_age
+from database import get_oldest_age, get_total_students, get_average_age, get_youngest_age, get_students_by_department
 
 def analytics_menu():
 
@@ -14,19 +14,20 @@ def analytics_menu():
         print("2. Average Age")
         print("3. Youngest Student")
         print("4. Oldest Student")
-        print("5. Back to Main Menu")
+        print("5. Students by Department")
+        print("6. Back to Main Menu")
 
         choice = input("Enter your choice: ")
 
         if choice == "1":
             total = get_total_students()
             print(f"\nTotal number of students: {total}")
-            print("\nPress Enter to continue...")
+            input("\nPress Enter to continue...")
 
         elif choice == "2":
             avg = get_average_age()
             print(f"\nAverage age of students: {avg:.2f}")
-            print("\nPress Enter to continue...")
+            input("\nPress Enter to continue...")
 
         elif choice == "3":
             youngest = get_youngest_age()
@@ -49,6 +50,21 @@ def analytics_menu():
             input("\nPress Enter to continue...")
 
         elif choice == "5":
+            department = get_students_by_department()
+
+            if not department:
+                print("Not students found.")
+
+            else:
+                print("Students by department.")
+                print("-" * 30)
+
+                for department, count in department:
+                    print(f"{department: <15}{count}")
+
+            input("\nPress enter to continue...")
+
+        elif choice == "6":
             break
 
         else:

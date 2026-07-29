@@ -185,3 +185,20 @@ def get_oldest_age():
         return None
 
     return result[0]
+
+
+def get_students_by_department():
+    connection = sqlite3.connect("students.db")
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT department, COUNT(*) FROM students
+        GROUP BY department;
+        """)
+
+    result = cursor.fetchall()
+
+    connection.close()
+
+    return result

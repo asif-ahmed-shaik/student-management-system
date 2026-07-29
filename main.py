@@ -9,7 +9,6 @@ from student_operations import (
 )
 
 create_table()
-analytics_menu()
 
 while True:
 
@@ -45,6 +44,9 @@ while True:
     elif choice == "6":
         print("Thank you for using Student Management System.")
         break
+
+    elif choice == "7":
+        analytics_menu()
 
     else:
         print("\n This feature is coming soon.")
