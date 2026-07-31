@@ -221,3 +221,23 @@ def get_largest_department():
     connection.close()
 
     return result
+
+
+def get_age_distribution():
+
+    connection = sqlite3.connect("students.db")
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT age, COUNT(*)
+        FROM students
+        GROUP BY age
+        ORDER BY age
+    """)
+
+    result = cursor.fetchall()
+
+    connection.close()
+
+    return result
