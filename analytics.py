@@ -1,4 +1,5 @@
 from database import get_oldest_age, get_total_students, get_average_age, get_youngest_age, get_students_by_department, get_largest_department
+from charts import show_department_chart
 
 def analytics_menu():
 
@@ -16,7 +17,8 @@ def analytics_menu():
         print("4. Oldest Student")
         print("5. Students by Department")
         print("6. Largest Department")
-        print("7. Back to Main Menu")
+        print("7. Department Pie Chart")
+        print("8. Back to Main Menu")
 
         choice = input("Enter your choice: ")
 
@@ -81,6 +83,9 @@ def analytics_menu():
             input("\nPress enter to continue...")          
 
         elif choice == "7":
+            show_department_chart()
+
+        elif choice == "8":
             break
 
         else:
