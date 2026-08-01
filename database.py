@@ -147,6 +147,9 @@ def get_average_age():
 
     connection.close()
 
+    if result[0] is None:
+        return None
+
     return result[0]
 
 def get_youngest_age():

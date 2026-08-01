@@ -64,9 +64,6 @@ def add_student():
         department
     )
 
-    #students.append(student)
-    #save_students()
-
     insert_student(student)
 
     print("\nStudent added successfully.")
@@ -88,7 +85,7 @@ def view_students():
     print("-" * 55)
 
     for student in students:
-        print(f"{student.id:<10}{student.name:<20}{str(student.age):<10}{student.department:<15}")
+        print(f"{student.id:<10}{student.name:<20}{str(student.age):<8}{student.department:<15}")
 
     print("-" * 55)
     print(f"Total Students: {len(students)}")
@@ -159,4 +156,3 @@ def delete_student():
         print("\nDeletion cancelled.")
 
     input("\nPress Enter to continue...")
-

@@ -30,7 +30,12 @@ def analytics_menu():
 
         elif choice == "2":
             avg = get_average_age()
-            print(f"\nAverage age of students: {avg:.2f}")
+
+            if avg is None:
+                print("\nNo students found.")
+            else:
+                print(f"\nAverage age of students: {avg:.2f}")
+
             input("\nPress Enter to continue...")
 
         elif choice == "3":
@@ -54,19 +59,19 @@ def analytics_menu():
             input("\nPress Enter to continue...")
 
         elif choice == "5":
-            department = get_students_by_department()
+            dept_counts = get_students_by_department()
 
-            if not department:
-                print("Not students found.")
+            if not dept_counts:
+                print("No students found.")
 
             else:
                 print("Students by department.")
                 print("-" * 30)
 
-                for department, count in department:
+                for department, count in dept_counts:
                     print(f"{department: <15}{count}")
 
-            input("\nPress enter to continue...")
+            input("\nPress Enter to continue...")
 
         elif choice == "6":
             largest = get_largest_department()
@@ -81,7 +86,7 @@ def analytics_menu():
                 print(f"Department : {department}")
                 print(f"Students   : {count}")
 
-            input("\nPress enter to continue...")          
+            input("\nPress Enter to continue...")
 
         elif choice == "7":
             show_department_chart()
@@ -94,6 +99,5 @@ def analytics_menu():
 
         else:
             print("Invalid choice. Please try again.")
-
 
 
