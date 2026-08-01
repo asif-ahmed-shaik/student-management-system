@@ -1,2 +1,10 @@
+# Python cache
 __pycache__/
 *.pyc
+
+# Virtual environments
+.venv/
+venv/
+
+# SQLite temporary files
+*.db-journal
