@@ -45,39 +45,6 @@ def get_non_empty_input(prompt):
             return value
 
 
-'''def save_students():
-    try:
-        student_data = []
-        for student in students:
-            student_data.append(student.to_dict())
-
-        with open("students.json", "w") as file:
-            json.dump(student_data, file, indent=4)
-
-    except Exception as e:
-        print(f"\nError saving students: {e}")
-
-
-def load_students():
-    global students
-
-    try:
-        with open("students.json", "r") as file:
-            student_data = json.load(file)
-
-        students = []
-
-        for data in student_data:
-            students.append(Student.from_dict(data))
-
-    except FileNotFoundError:
-        students = []
-        print("students.json not found. Starting with an empty database.")
-
-    except json.JSONDecodeError:
-        students = []
-        print("students.json is corrupted. Starting with an empty database.")'''
-
 # -----------------------------
 # Student Operations
 # -----------------------------
@@ -96,9 +63,6 @@ def add_student():
         age,
         department
     )
-
-    #students.append(student)
-    #save_students()
 
     insert_student(student)
 
@@ -121,7 +85,7 @@ def view_students():
     print("-" * 55)
 
     for student in students:
-        print(f"{student.id:<10}{student.name:<20}{str(student.age):<10}{student.department:<15}")
+        print(f"{student.id:<10}{student.name:<20}{str(student.age):<8}{student.department:<15}")
 
     print("-" * 55)
     print(f"Total Students: {len(students)}")
@@ -192,4 +156,3 @@ def delete_student():
         print("\nDeletion cancelled.")
 
     input("\nPress Enter to continue...")
-

@@ -118,3 +118,129 @@ def delete_student_from_db(student_id):
 
     connection.close()
 
+
+def get_total_students():
+    connection = sqlite3.connect("students.db")
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT COUNT(*) FROM students
+        """)
+
+    result = cursor.fetchone()
+
+    connection.close()
+
+    return result[0]
+
+def get_average_age():
+    connection = sqlite3.connect("students.db")
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT AVG(age) FROM students
+        """)
+
+    result = cursor.fetchone()
+
+    connection.close()
+
+    if result[0] is None:
+        return None
+
+    return result[0]
+
+def get_youngest_age():
+    connection = sqlite3.connect("students.db")
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT MIN(age) FROM students
+        """)
+
+    result = cursor.fetchone()
+
+    connection.close()
+
+    if result[0] is None:
+        return None
+
+    return result[0]
+
+
+def get_oldest_age():
+    connection = sqlite3.connect("students.db")
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT MAX(age) FROM students
+        """)
+
+    result = cursor.fetchone()
+
+    connection.close()
+
+    if result[0] is None:
+        return None
+
+    return result[0]
+
+
+def get_students_by_department():
+    connection = sqlite3.connect("students.db")
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT department, COUNT(*) FROM students
+        GROUP BY department;
+        """)
+
+    result = cursor.fetchall()
+
+    connection.close()
+
+    return result
+
+
+def get_largest_department():
+    connection = sqlite3.connect("students.db")
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT department, COUNT(*) AS total_students FROM students
+        GROUP BY department
+        ORDER BY total_students DESC
+        LIMIT 1;
+        """)
+
+    result = cursor.fetchone()
+
+    connection.close()
+
+    return result
+
+
+def get_age_distribution():
+
+    connection = sqlite3.connect("students.db")
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT age, COUNT(*)
+        FROM students
+        GROUP BY age
+        ORDER BY age
+    """)
+
+    result = cursor.fetchall()
+
+    connection.close()
+
+    return result

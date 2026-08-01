@@ -1,3 +1,4 @@
+from analytics import analytics_menu
 from database import create_table
 from student_operations import (
     add_student,
@@ -21,6 +22,7 @@ while True:
     print("4. Update Student")
     print("5. Delete Student")
     print("6. Exit")
+    print("7. Analytics Dashboard")
 
     choice = input("\nEnter your choice: ")
 
@@ -42,6 +44,9 @@ while True:
     elif choice == "6":
         print("Thank you for using Student Management System.")
         break
+
+    elif choice == "7":
+        analytics_menu()
 
     else:
         print("\n This feature is coming soon.")
